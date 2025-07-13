@@ -1,4 +1,0 @@
-# Regras para detectar SQL Injection
-alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SQL Injection - Tentativa de ataque com 'UNION SELECT'"; flow:to_server,established; content:"UNION"; nocase; content:"SELECT"; nocase; distance:0; pcre:"/UNION\s+SELECT/i"; classtype:web-application-attack; sid:1000001; rev:1;)
-alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SQL Injection - Detecção de '1=1'"; flow:to_server,established; content:"1=1"; nocase; classtype:web-application-attack; sid:1000002; rev:1;)
-alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SQL Injection - Tentativa de ataque com 'OR 1=1'"; flow:to_server,established; pcre:"/\s+OR\s+1\s*=\s*1/i"; classtype:web-application-attack; sid:1000003; rev:1;)
